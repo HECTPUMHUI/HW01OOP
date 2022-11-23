@@ -21,11 +21,14 @@ class Product:
         self.name = name
         self.price = price
 
+    def __str__(self):
+        return f"Product: {self.name}"
+
     def show_product(self):
         return f'product is: {self.name} and price is: {self.price}.'
 
     def total_price(self, quantity):
-        return f'total price will: {self.price * quantity}.'
+        return f'total price will: {self.price * quantity}, if quantity {quantity}.'
 
 
 beers = Product('Beers', 100)
@@ -33,15 +36,22 @@ mango = Product('Mango', 70)
 
 print(beers.show_product())
 print(beers.total_price(14))
-print(mango.total_price(3))
+print(mango.show_product())
+print(mango.total_price(8))
 
 
 class ShoppingCart:
-    dict_cart = {}
-# я вже пробував і наслідування класу Product, та всерівно та сама проблема
+    def __init__(self):
+        self.products = []
+        self.quantities = []
+
     def add_to_cart(self, product: Product, quantity):
-        self.dict_cart = product
-        print(self.dict_cart)  # check
+        self.products.append(product)
+        self.quantities.append(quantity)
+        for i in range(len(self.products)):
+            print(self.products[i])
+        for i in range(len(self.quantities)):
+            print(f'quantities: {self.quantities[i]}')
 
     def total_price(self):
         pass
@@ -50,4 +60,4 @@ class ShoppingCart:
 cart_1 = ShoppingCart()
 cart_2 = ShoppingCart()
 cart_1.add_to_cart(beers, 5)
-cart_2.add_to_cart(mango, 5)
+cart_2.add_to_cart(mango, 6)
