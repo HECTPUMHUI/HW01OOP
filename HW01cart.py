@@ -1,6 +1,5 @@
 """
 Challenge:
-
 #. Implement ``Product`` class
 Each ``Product`` instance should implement properties:
     * ``name`` - a product's name, like apple, cheese etc.
@@ -39,10 +38,10 @@ print(mango.total_price(3))
 
 class ShoppingCart:
     dict_cart = {}
-
+# я вже пробував і наслідування класу Product, та всерівно та сама проблема
     def add_to_cart(self, product: Product, quantity):
         self.dict_cart = product
-        print(self.dict_cart) # check
+        print(self.dict_cart)  # check
 
     def total_price(self):
         pass
