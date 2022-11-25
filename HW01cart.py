@@ -7,12 +7,18 @@ class Product:
     def __str__(self):
         return f"Product: {self.name}"
 
+    def __repr__(self):
+        return f"Product: {self.name}"
+
     def show_product(self):
         return f'product is: {self.name} and price is: {self.price}.'
 
     def total_price(self, quantity):
         return round(self.price * quantity, 2)
 
+
+# зробити [Product: Beers, Product: Mango, Product: Beers]
+# щоб виводило одни продук а кількість міняло, продукти не повторювало))
 
 class ShoppingCart:
     def __init__(self):
@@ -38,5 +44,5 @@ cart_1 = ShoppingCart()
 
 cart_1.add_to_cart(beers, 0.7)
 cart_1.add_to_cart(mango, 4)
-
-print(cart_1.total_price())
+cart_1.add_to_cart(beers, 0.7)
+print(cart_1.products)
