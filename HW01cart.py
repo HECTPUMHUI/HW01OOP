@@ -47,6 +47,10 @@ cart_1 = ShoppingCart()
 cart_1.add_to_cart(beers, 3)
 cart_1.add_to_cart(mango, 4)
 cart_1.add_to_cart(beers, 3)
+
 print(cart_1.products)
 print(sum(cart_1.quantities))
+
 print(cart_1.total_price())
+
+
