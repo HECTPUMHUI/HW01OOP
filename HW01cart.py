@@ -14,10 +14,8 @@ class Product:
         return round(self.price * quantity, 2)
 
 
-# зробити [Product: Beers, Product: Mango, Product: Beers]
-# щоб виводило одни продук а кількість міняло, продукти не повторювало))
-
 class ShoppingCart:
+
     def __init__(self):
         self.products = []
         self.quantities = []
@@ -50,16 +48,4 @@ cart_1.add_to_cart(beers, 3)
 
 print(cart_1.products)
 print(sum(cart_1.quantities))
-<<<<<<< HEAD
 print(cart_1.total_price())
-<<<<<<< HEAD
-=======
-print(cart_2.total_price())
-
->>>>>>> first
-=======
-
-print(cart_1.total_price())
-
-
->>>>>>> origin/master
