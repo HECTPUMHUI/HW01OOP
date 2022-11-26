@@ -50,3 +50,8 @@ cart_1.add_to_cart(beers, 3)
 print(cart_1.products)
 print(sum(cart_1.quantities))
 print(cart_1.total_price())
+<<<<<<< HEAD
+=======
+print(cart_2.total_price())
+
+>>>>>>> first
