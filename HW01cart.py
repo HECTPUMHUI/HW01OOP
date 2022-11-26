@@ -47,11 +47,19 @@ cart_1 = ShoppingCart()
 cart_1.add_to_cart(beers, 3)
 cart_1.add_to_cart(mango, 4)
 cart_1.add_to_cart(beers, 3)
+
 print(cart_1.products)
 print(sum(cart_1.quantities))
+<<<<<<< HEAD
 print(cart_1.total_price())
 <<<<<<< HEAD
 =======
 print(cart_2.total_price())
 
 >>>>>>> first
+=======
+
+print(cart_1.total_price())
+
+
+>>>>>>> origin/master
