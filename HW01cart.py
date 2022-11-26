@@ -4,14 +4,11 @@ class Product:
         self.name = name
         self.price = price
 
-    def __str__(self):
-        return f"Product: {self.name}"
-
     def __repr__(self):
         return f"Product: {self.name}"
 
     def show_product(self):
-        return f'product is: {self.name} and price is: {self.price}.'
+        return f'Product is: {self.name} and price is: {self.price}.'
 
     def total_price(self, quantity):
         return round(self.price * quantity, 2)
@@ -26,8 +23,13 @@ class ShoppingCart:
         self.quantities = []
 
     def add_to_cart(self, product: Product, quantity):
-        self.products.append(product)
-        self.quantities.append(quantity)
+        if product in self.products:
+            self.quantities.append(quantity)
+            self.products.append(product)
+        else:
+            self.products.append(product)
+            self.quantities.append(quantity)
+
         return self.products, self.quantities
 
     def total_price(self):
@@ -37,12 +39,14 @@ class ShoppingCart:
         return round(total, 2)
 
 
-beers = Product('Beers', 10.59)
-mango = Product('Mango', 36.55)
+beers = Product('Beers', 10)
+mango = Product('Mango', 20)
 
 cart_1 = ShoppingCart()
 
-cart_1.add_to_cart(beers, 0.7)
+cart_1.add_to_cart(beers, 3)
 cart_1.add_to_cart(mango, 4)
-cart_1.add_to_cart(beers, 0.7)
+cart_1.add_to_cart(beers, 3)
 print(cart_1.products)
+print(sum(cart_1.quantities))
+print(cart_1.total_price())
