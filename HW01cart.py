@@ -19,8 +19,6 @@ class ShoppingCart:
     def __init__(self):
         self.products = []
         self.quantities = []
-        self.products_1 = []
-        self.quantities_1 = []
 
     def add_to_cart(self, product: Product, quantity):
         if product not in self.products:
@@ -32,23 +30,6 @@ class ShoppingCart:
                 self.quantities[index2] += quantity
 
         return self.products, self.quantities
-
-    # test
-    # def view_list(self):
-    #     for product, quantity in zip(self.products, self.quantities):
-    #         result = f'Product: {product} Quantity: {quantity}'
-    #     return result
-
-    # worked
-    # def add_to_cart(self, product: Product, quantity):
-    #     if product in self.products:
-    #         self.quantities.append(quantity)
-    #         self.products.append(product)
-    #     else:
-    #         self.products.append(product)
-    #         self.quantities.append(quantity)
-    #
-    #     return self.products, self.quantities
 
     def total_price(self):
         total = 0
@@ -73,12 +54,10 @@ cart_1.add_to_cart(beers, 3)
 cart_1.add_to_cart(lemon, 10)
 cart_1.add_to_cart(lemon, 30)
 cart_1.add_to_cart(kiwi, 15)
-# print(f'view {cart_1.view_list()}')
 
 print(cart_1.products)
+
 print(f'Total product quantity in cart: {sum(cart_1.quantities)}')
 print(f'Total price in cart: {cart_1.total_price()}')
-#
-# print(cart_1.products)
+
 print(cart_1.quantities)
-# print(cart_1.view_list())
