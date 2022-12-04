@@ -84,14 +84,14 @@ class ShoppingCart:
             return cart
 
     def __repr__(self):
-        return f'add: {self.products} \n' \
-               f'quantities: {self.quantities}'
+        return f'Add: {self.products} \n' \
+               f'Quantities: {self.quantities}'
 
     def total_price(self):
         total = 0
         for product, quantity in zip(self.products, self.quantities):
             total += product.total_price(quantity)
-        return round(total, 2)
+        return f'Total: {round(total, 2)}'
 
 
 beers = Product('Beers', 15)
