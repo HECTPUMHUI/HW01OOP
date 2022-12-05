@@ -1,39 +1,11 @@
 """
-Constructors
-1)Implement both Product and ShoppingCart initializers to provide required data
-while creating instances.
-It's ok to initialize empty carts.
-1) можна створити пустий об'єкт для роботи з двома кошиками(двома різними об'єктами)
-2) Implement a human readable string representations for these classes.
-2) додати __стр__ для відображення об'єктів класу
-3) Apple (Fruit) equals to Apple (MacBook)?
-Implement equality comparison for the Product instances. Consider the products are
-equal in case both objects
-have the same name and price.
-3)умова для порівнняня, об'єкти різні при однакових іменах, якщо їх ціна різна
-Casting
-4) Implement type-casting for Product and ShoppingCart. - Product cast to float type
- should be equal to its price -
-Product cast to string type should be equal to its name - ShoppingCart cast to float
-type should be equal to
- its total price
-4) переклад розумію, суть не дуже)
-Refactor products
-5) Refactor add_product method in a way to avoid product instances duplication in the cart -
-adjust appropriate quantities only.
-5) переробити метод, якщо продукти дублюються, змінювати тільки кількість
-Addition
-6)Implement addition behavior for ShoppingCart class: - if a Product is added to the cart,
- the behavior is the same as for add_product method with quantity = 1. - if another
- ShoppingCart instance is
- added the result is an instance of the same type containing products and their
- quantities from both carts
-6) тут пояснення поведінки методу у класі Кошика при додаванні продукти в кошик.
+    This script emulate the behavior of Shop and Bye something.
 
 """
 
 
 class Product:
+    """Create a new Product"""
 
     def __init__(self, name, price):
         """Object constructor"""
@@ -45,13 +17,21 @@ class Product:
         return f"Product: {self.name}"
 
     def show_product(self):
+        """Show the product"""
         return f'Product is: {self.name} and price is: {self.price}.'
 
     def total_price(self, quantity):
+        """Total price"""
         return round(self.price * quantity, 2)
+
+    def __eq__(self, other):
+        if not isinstance(other, Product):
+            return False
+        return self.name == other.name and self.price == other.price
 
 
 class ShoppingCart:
+    """Shopping Cart"""
 
     def __init__(self):
         """Object constructor"""
@@ -88,6 +68,7 @@ class ShoppingCart:
                f'Quantities: {self.quantities}'
 
     def total_price(self):
+        """Returns the total price"""
         total = 0
         for product, quantity in zip(self.products, self.quantities):
             total += product.total_price(quantity)
@@ -95,6 +76,7 @@ class ShoppingCart:
 
 
 beers = Product('Beers', 15)
+beers_1 = Product('Beers', 100)
 mango = Product('Mango', 20)
 lemon = Product('Lemon', 11)
 kiwi = Product('Kiwi', 15)
@@ -115,7 +97,10 @@ cart_1.add_to_cart(mango, 35)
 cart_1.add_to_cart(kiwi, 15)
 
 cart_2.add_to_cart(mango, 35)
+cart_2.add_to_cart(beers_1, 35)
+cart_2.add_to_cart(beers_1, 10)
 cart_2.add_to_cart(mango, 35)
+cart_2.add_to_cart(beers, 15)
 cart_2.add_to_cart(beers, 15)
 
 # print(cart_1.products)
@@ -132,7 +117,8 @@ cart_2.add_to_cart(beers, 15)
 # print(cart_2)
 
 
-cart_total = cart_1.__add__(cart_2)
+# cart_total = cart_1.__add__(cart_2)
+cart_total = cart_1 + cart_2
 print(cart_total)
 # print(isinstance(cart_1, ShoppingCart))
 print(cart_total.total_price())
